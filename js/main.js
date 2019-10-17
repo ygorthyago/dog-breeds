@@ -95,7 +95,12 @@ function load_dogs(){
     // Get Dogs from Local Storage and turn data into Objects
     var dogs = JSON.parse(localStorage.getItem("dogs"));
 
-    if (dogs.length && dogs && typeof dogs !== 'undefined') {
+    if (!dogs) {
+        $(".history__error-msg").fadeIn();
+        return false;
+    }
+
+    if (dogs.length && typeof dogs !== 'undefined') {
         $(".history__error-msg").css("display", "none");
 
         // Remove old dogs to update
