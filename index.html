@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dog Breeds</title>
+    <meta name="description" content="Dog Breeds API">
+
+    <!-- CNDs -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css">
+    <script src="https://kit.fontawesome.com/46f87ba5ea.js" crossorigin="anonymous"></script>
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <img src="assets/images/logo.png" alt="Dog Breeds">
+            <h1>Dog Breeds</h1>
+            <button type="button" id="reset-button">New Dog</button>
+        </div>
+    </header>
+
+    <section class="flex flex--start flex--align-start">
+        <aside class="history">
+            <span class="history__title">My Dogs</span>
+            <span class="history__error-msg">Plase add new dogs...</span>
+            <ul class="storeddogs">
+                <li class="storeddogs__item storeddogs__item--example">
+                    <picture>
+                        <img src="{dog-image}" alt="{dog-breed}">
+                    </picture>
+                    <div class="storeddogs__col">
+                        <span class="storeddogs__dogname" data-color="{dog-color}" data-font="{dog-font}">{dog-name}</span>
+                        <span class="storeddogs__dogbreed">{dog-breed}</span>
+                    </div>
+                    <i class="storeddogs__remove far fa-times-circle"></i>
+                </li>
+            </ul>
+        </aside>
+
+        <div class="searchdogs">
+            <div class="searchdogs__box flex flex--wrap flex--align-start">
+                <div class="searchdogs__select">
+                    <i class="fas fa-chevron-down"></i>
+                    <select name="searchdogs" id="searchdogs-select">
+                        <option value="default" selected hidden>Select your dog breed</option>
+                    </select>
+                </div>
+
+                <div class="searchdogs__col searchdogs__col--dogbox">
+                    <input type="text" placeholder="Dog Name" class="searchdogs__dogname">
+    
+                    <picture>
+                        <img src="assets/images/intro.png" alt="Welcome" class="searchdogs__dogimage">
+                    </picture>
+                </div>
+
+                <div class="searchdogs__col">
+                    <div class="searchdogs__select">
+                        <i class="fas fa-chevron-down"></i>
+                        <select name="fontstyle" id="searchdogs-fonts">
+                            <option value="default" selected hidden>Select your favorite font</option>
+                        </select>
+                    </div>
+
+                    <div class="searchdogs__colorpicker flex flex--align-start">
+                        <span>Select name color:</span>
+                        <input id="colorpicker" type="hidden">
+                    </div>
+                    <button type="button" class="searchdogs__button">Save</button>
+                    <span class="searchdogs__msg-error">Please select a breed and fill in the name</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CNDs -->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+    integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js"></script>
+
+    <!-- Main JS -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
