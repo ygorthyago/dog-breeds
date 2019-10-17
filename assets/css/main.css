@@ -139,7 +139,8 @@ body {
   margin: 0 auto;
   padding: 0 20px;
   width: 100%;
-  max-width: 1400px; }
+  max-width: 1400px;
+  box-sizing: border-box; }
 
 .flex {
   display: -ms-flexbox;
@@ -159,11 +160,13 @@ body {
     align-items: flex-start; }
 
 header {
-  font-size: 25px;
+  font-size: 22px;
   color: white;
   padding: 20px 0;
   background: black;
   box-sizing: border-box; }
+  header .toggle-history {
+    display: none; }
   header h1 {
     padding: 0 15px; }
   header .container {
@@ -203,11 +206,41 @@ header {
       background: #d2682c;
       z-index: -1;
       transition: all cubic-bezier(1, -0.04, 0, 1.15) 0.3s; }
+  @media (max-width: 1024px) {
+    header {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      z-index: 10; }
+      header #reset-button {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: #000;
+        z-index: 10;
+        margin: 0;
+        border: none; }
+      header .toggle-history {
+        display: block;
+        position: fixed;
+        font-size: 40px;
+        left: 20px;
+        top: 30px;
+        -ms-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+        transition: all cubic-bezier(1, 0.02, 0, 0.99) 0.6s; }
+        header .toggle-history--active {
+          -ms-transform: rotate(450deg);
+          transform: rotate(450deg); }
+      header .container {
+        padding: 0 20px 0 100px; } }
 
 select,
 input {
   text-transform: capitalize;
-  font-size: 25px;
+  font-size: 22px;
   font-family: inherit;
   width: 100%;
   margin: 0 0 40px;
@@ -235,17 +268,34 @@ input {
   input:-ms-input-placeholder {
     opacity: 1;
     color: inherit; }
+  @media (max-width: 768px) {
+    select,
+    input {
+      font-size: 18px;
+      margin-bottom: 25px; } }
 
 .history {
   width: 260px;
   height: calc(100vh - 104px);
-  margin-right: 45px;
+  margin-right: 15px;
   padding: 15px 20px;
   -ms-flex-item-align: normal;
   -ms-grid-row-align: normal;
   align-self: normal;
   background: chocolate;
   box-sizing: border-box; }
+  @media (max-width: 1024px) {
+    .history {
+      margin: 0;
+      top: 104px;
+      left: -100%;
+      position: fixed;
+      z-index: 9;
+      transition: all linear .4s;
+      box-shadow: 3px 0px 5px 0px rgba(0, 0, 0, 0); }
+      .history--active {
+        left: 0;
+        box-shadow: 3px 0px 5px 0px rgba(0, 0, 0, 0.75); } }
   .history__title {
     color: #FFF;
     font-weight: bold;
@@ -303,7 +353,7 @@ input {
   color: #d2682c;
   cursor: pointer; }
 .storeddogs__col {
-  padding-left: 15px;
+  padding: 10px 0 10px 15px;
   width: calc(100% - 96px);
   border-left: 1px solid #000;
   position: relative; }
@@ -317,8 +367,10 @@ input {
   display: block; }
 
 .searchdogs {
+  width: 750px;
+  max-width: calc(100% - 260px);
   padding: 40px;
-  width: 750px; }
+  box-sizing: border-box; }
   .searchdogs__col {
     width: 50%;
     padding: 20px 0 40px 20px;
@@ -355,7 +407,7 @@ input {
       position: absolute; }
   .searchdogs__dogname {
     width: 100%;
-    font-size: 26px;
+    font-size: 22px;
     text-align: center;
     padding: 10px 5px;
     margin: 0 0 40px;
@@ -368,7 +420,7 @@ input {
   .searchdogs__dogimage {
     transition: all linear .3s; }
   .searchdogs__colorpicker span {
-    font-size: 25px;
+    font-size: 22px;
     margin-right: 20px; }
   .searchdogs__colorpicker .sp-replacer {
     color: #d2682c;
@@ -393,7 +445,7 @@ input {
   .searchdogs__button {
     cursor: pointer;
     width: 100%;
-    font-size: 25px;
+    font-size: 22px;
     margin: 40px 0 0;
     padding: 10px 5px;
     border-radius: 0px;
@@ -428,3 +480,31 @@ input {
     transition: all linear .3s; }
     .searchdogs__msg-error--visible {
       opacity: 1; }
+  @media (max-width: 1024px) {
+    .searchdogs {
+      width: 100%;
+      max-width: none;
+      margin: 0 auto;
+      padding-top: 140px; }
+      .searchdogs__box {
+        -ms-flex-pack: center;
+        justify-content: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        max-width: 480px;
+        margin: 0 auto; }
+      .searchdogs__col {
+        width: 100%;
+        padding: 15px; } }
+  @media (max-width: 768px) {
+    .searchdogs {
+      padding: 140px 15px 0; }
+      .searchdogs__dogname {
+        font-size: 18px; }
+      .searchdogs__button {
+        font-size: 18px;
+        margin-top: 15px; }
+      .searchdogs__colorpicker span {
+        font-size: 18px; } }

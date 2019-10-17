@@ -55,7 +55,11 @@ $(document).ready(function(){
         update_dog(DogName, DogBreed, DogFont, DogImage, DogColor, updateIndex, true);
     })
 
-
+    $(document).on('click', '.toggle-history', function(){
+        $('.history').toggleClass('history--active')
+        $('.toggle-history').toggleClass('toggle-history--active')
+    })
+    
 });
 
 $(document).on('click', '.storeddogs__item picture , .storeddogs__item .storeddogs__col', function(){ 

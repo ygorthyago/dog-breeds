@@ -30,6 +30,7 @@ body {
     padding: 0 20px;
     width: 100%;
     max-width: 1400px;
+    box-sizing: border-box;
 }
 
 .flex {
@@ -52,11 +53,15 @@ body {
 
 // Header Section
 header {
-    font-size: 25px;
+    font-size: 22px;
     color: white;
     padding: 20px 0;
     background: black;
     box-sizing: border-box;
+
+    .toggle-history {
+        display: none;
+    }
 
     h1 {
         padding: 0 15px;
@@ -105,13 +110,50 @@ header {
             transition: all cubic-bezier(1, -0.04, 0, 1.15) .3s;
         }
     }
+
+    @media (max-width:1024px) {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        z-index: 10;
+        
+        #reset-button {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #000;
+            z-index: 10;
+            margin: 0;
+            border: none;
+        }
+
+        .toggle-history {
+            display: block;
+            position: fixed;
+            font-size: 40px;
+            left: 20px;
+            top: 30px;
+            transform: rotate(-90deg);
+            transition: all cubic-bezier(1, 0.02, 0, 0.99) .6s;
+
+            &--active {
+                transform: rotate(450deg);
+            }
+        }
+
+        .container {
+            padding: 0 20px 0 100px;
+        }
+    }
 }
 
 // Inputs
 select,
 input {
     text-transform: capitalize;
-    font-size: 25px;
+    font-size: 22px;
     font-family: inherit;
     width: 100%;
     margin: 0 0 40px;
@@ -128,16 +170,36 @@ input {
         opacity: 1;
         color: inherit;
     }
+
+    @media (max-width: 768px) {
+        font-size: 18px;
+        margin-bottom: 25px;
+    }
 }
 
 .history {
     width: 260px;
     height: calc(100vh - 104px);
-    margin-right: 45px;
+    margin-right: 15px;
     padding: 15px 20px;
     align-self: normal;
     background: chocolate;
     box-sizing: border-box;
+
+    @media (max-width: 1024px) {
+        margin: 0;
+        top: 104px;
+        left: -100%;
+        position: fixed;
+        z-index: 9;
+        transition: all linear .4s;
+        box-shadow: 3px 0px 5px 0px rgba(0,0,0,0);
+        
+        &--active {
+            left: 0;
+            box-shadow: 3px 0px 5px 0px rgba(0,0,0,0.75);
+        }
+    }
 
     &__title {
         color: #FFF;
@@ -210,7 +272,7 @@ input {
     }
 
     &__col {
-        padding-left: 10px 0 10px 15px;
+        padding: 10px 0 10px 15px;
         width: calc(100% - 96px);
         border-left: 1px solid #000;
         position: relative;
@@ -231,8 +293,10 @@ input {
 
 
 .searchdogs {
-    padding: 40px;
     width: 750px;
+    max-width: calc(100% - 260px);
+    padding: 40px;
+    box-sizing: border-box;
 
     &__col {
         width: 50%;
@@ -281,7 +345,7 @@ input {
 
     &__dogname {
         width: 100%;
-        font-size: 26px;
+        font-size: 22px;
         text-align: center;
         padding: 10px 5px;
         margin: 0 0 40px;
@@ -299,7 +363,7 @@ input {
 
     &__colorpicker {
         span {
-            font-size: 25px;
+            font-size: 22px;
             margin-right: 20px;
         }
 
@@ -332,7 +396,7 @@ input {
     &__button {
         cursor: pointer;
         width: 100%;
-        font-size: 25px;
+        font-size: 22px;
         margin: 40px 0 0;
         padding: 10px 5px;
         border-radius: 0px;
@@ -376,6 +440,45 @@ input {
 
         &--visible {
             opacity: 1;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        width: 100%;
+        max-width: none;
+        margin: 0 auto;
+        padding-top: 140px;
+        
+        &__box {
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        &__col {
+            width: 100%;
+            padding: 15px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        padding: 140px 15px 0;
+
+        &__dogname {
+            font-size: 18px;
+        }
+
+        &__button {
+            font-size: 18px;
+            margin-top: 15px;
+        }
+
+        &__colorpicker {
+            span {
+                font-size: 18px;
+            }
         }
     }
 }
